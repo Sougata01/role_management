@@ -1,0 +1,7 @@
+.active{
+    background: #ccc;
+    border-radius: 5px;
+}
+.active.nav-link{
+    color: #000;
+}
