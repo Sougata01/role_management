@@ -26,6 +26,7 @@ Route::group(['prefix' => 'account'], function(){
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('account.dashboard');
         Route::get('/user-list', [UsersController::class, 'userList'])->name('account.userList');
         Route::get('/add-user', [UsersController::class, 'addUser'])->name('account.addUser');
+        Route::post('/create-user', [UsersController::class, 'createUser'])->name('account.createUser');
     });
     
 });
