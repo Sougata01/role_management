@@ -35,4 +35,9 @@ class UsersController extends Controller
         Post::create($incomingFields);
         return redirect()->route('account.userList');
     }
+
+    public function deleteUser(User $user) {
+        $user->delete();
+        return redirect(route('account.userList'))->with('success', 'User deleted successfully');
+    }
 }
