@@ -17,9 +17,11 @@ class UsersController extends Controller
         }
         return view('users.userList', ['posts'=>$posts]);
     }
+
     public function addUser() {
         return view('users.addUser');
     }
+
     public function createUser(Request $request){
         $incomingFields = $request->validate([
             'user'=> 'required',
@@ -33,11 +35,11 @@ class UsersController extends Controller
         $incomingFields['user_id'] = auth()->id();
         // post model is to be created
         Post::create($incomingFields);
-        return redirect()->route('account.userList');
+        return redirect()->route('account.userList')->with('success', 'User added successfully');
     }
 
-    public function deleteUser(User $user) {
-        $user->delete();
-        return redirect(route('account.userList'))->with('success', 'User deleted successfully');
+    public function deleteUser(Post $post) {
+        $post->delete();
+        return redirect()->route('account.userList')->with('success', 'User deleted successfully');
     }
 }

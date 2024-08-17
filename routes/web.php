@@ -27,7 +27,7 @@ Route::group(['prefix' => 'account'], function(){
         Route::get('/user-list', [UsersController::class, 'userList'])->name('account.userList');
         Route::get('/add-user', [UsersController::class, 'addUser'])->name('account.addUser');
         Route::post('/create-user', [UsersController::class, 'createUser'])->name('account.createUser');
-        Route::delete('/delete-user/{user}/delete', [UsersController::class, 'deleteUser'])->name('account.deleteUser');
+        Route::delete('/delete-user/{post}', [UsersController::class, 'deleteUser'])->name('account.deleteUser');
     });
     
 });
