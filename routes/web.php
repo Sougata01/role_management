@@ -6,7 +6,6 @@ use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    echo touppercase('hello');
     return view('welcome');
 });
 
@@ -28,6 +27,8 @@ Route::group(['prefix' => 'account'], function(){
         Route::get('/add-user', [UsersController::class, 'addUser'])->name('account.addUser');
         Route::post('/create-user', [UsersController::class, 'createUser'])->name('account.createUser');
         Route::delete('/delete-user/{post}', [UsersController::class, 'deleteUser'])->name('account.deleteUser');
+        Route::get('/edit-user/{post}', [UsersController::class, 'editUser'])->name('account.editUser');
+        Route::put('/update-user/{post}', [UsersController::class, 'updateUser'])->name('account.updateUser');
     });
     
 });
