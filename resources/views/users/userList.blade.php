@@ -17,7 +17,8 @@
                         <th scope="col">User</th>
                         <th scope="col">Role</th>
                         <th scope="col">Comment</th>
-                        <th colspan="2">Actions</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,10 +29,15 @@
                             <td style="max-width: 300px;">{{ $post['comment'] }}</td>
                             <td><a class="btn btn-primary" href="{{ route('account.editUser', ['post' => $post['id']]) }}">Edit</a></td>
                             <td>
-                                <form action="{{ route('account.deleteUser', ['post' => $post['id']]) }}" method="post">
+                                <form action="{{ route('account.deleteUser', ['post' => $post['id']]) }}" method="post" onsubmit="confirmation(event)">
                                     @csrf
                                     @method('DELETE')
+                                    
+                                    {{-- using sweetalert --}}
                                     <button class="btn btn-danger">Delete</button>
+
+                                    {{-- using javascript showing confirmation --}}
+                                    {{-- <button onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger">Delete</button> --}}
                                 </form>
                             </td>
                         </tr>

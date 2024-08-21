@@ -4,8 +4,8 @@
     [$controller, $action] = explode('@', $controllerAction);
 @endphp
 
-<div class="d-flex flex-column justify-content-center align-items-center">
-    <ul class="nav flex-column">
+<div class="d-flex flex-column justify-content-center align-items-center mt-4">
+    <ul class="nav flex-column justify-content-start">
         <li class="nav-item {{ $controller == 'DashboardController' && in_array($action, ['index']) ? 'active' : '' }}">
             <a class="nav-link btn text-white" role="button" href="{{ route('account.dashboard') }}">Dashboard</a>
         </li>
