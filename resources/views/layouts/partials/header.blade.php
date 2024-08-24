@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md bg-white shadow-lg bsb-navbar bsb-navbar-hover bsb-navbar-caret">
+<nav class="navbar navbar-expand-md bg-white shadow-lg fixed-top" style="z-index: 1031">
     <div class="container">
         <a class="navbar-brand" href="{{ route('account.dashboard') }}">
             <strong>Laravel 11 Multi Auth</strong>

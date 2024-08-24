@@ -10,7 +10,7 @@ class UsersController extends Controller
     public function userList()
     {
         // using user model
-        $posts = auth()->user()->usersPosts()->latest()->get();
+        $posts = auth()->user()->usersPosts()->latest()->paginate(5);
         // using post model
         // $posts = Post::where('user_id',auth()->id())->latest()->get();
         return view('users.userList', ['posts' => $posts]);
