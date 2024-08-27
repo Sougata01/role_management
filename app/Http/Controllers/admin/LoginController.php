@@ -25,7 +25,10 @@ class LoginController extends Controller
         if ($validator->passes()) {
 
             if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
-                // dd(Auth::user());
+                // dd(Auth::guard('admin')->check());
+                if(Auth::guard('admin')->user()->role != 'admin'){
+                    return redirect()->route('admin.login')->with('error','You are not authorized.');
+                }
                 return redirect()->route('admin.dashboard');
             } else {
                 return redirect()->route('admin.login')->with('error', 'Either email or password is incorrect'); // session message to show for errors if login credentials are incorrect
@@ -35,5 +38,11 @@ class LoginController extends Controller
                 ->withInput() //so that form value doesn't get cleared
                 ->withErrors($validator); //to display errors
         }
+    }
+
+    // this method will logout admin user
+    public function logout(){
+        Auth::guard('admin')->logout();
+        return redirect()->route('admin.login');
     }
 }

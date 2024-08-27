@@ -26,21 +26,23 @@
                             <td>{{ $post['user'] }}</td>
                             <td>{{ $post['role'] }}</td>
                             <td style="max-width: 300px;">{{ $post['comment'] }}</td>
-                            <td class="d-flex">
-                                <a class="btn btn-primary"
+                            <td >
+                                <div class="d-flex">
+                                    <a class="btn btn-primary"
                                     href="{{ route('account.editUser', ['post' => $post['id']]) }}">Edit</a>
-
-                                <form action="{{ route('account.deleteUser', ['post' => $post['id']]) }}" method="post"
-                                    onsubmit="confirmation(event)">
-                                    @csrf
-                                    @method('DELETE')
-
-                                    {{-- using sweetalert --}}
-                                    <button class="btn btn-danger">Delete</button>
-
-                                    {{-- using javascript showing confirmation --}}
-                                    {{-- <button onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger">Delete</button> --}}
-                                </form>
+                                    
+                                    <form action="{{ route('account.deleteUser', ['post' => $post['id']]) }}" method="post"
+                                        onsubmit="confirmation(event)">
+                                        @csrf
+                                        @method('DELETE')
+                                        
+                                        {{-- using sweetalert --}}
+                                        <button class="btn btn-danger">Delete</button>
+                                        
+                                        {{-- using javascript showing confirmation --}}
+                                        {{-- <button onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger">Delete</button> --}}
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @endforeach

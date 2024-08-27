@@ -41,6 +41,7 @@ Route::group(['prefix' => 'admin'], function(){
         Route::post('authenticate', [AdminLoginController::class, 'authenticate'])->name('admin.authenticate');
     });
     Route::group(['middleware' => 'auth:admin'], function () {
+        Route::get('logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
         Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     });
 });

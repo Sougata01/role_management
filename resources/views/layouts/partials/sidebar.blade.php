@@ -9,9 +9,6 @@
         <li class="nav-item {{ $controller == 'DashboardController' && in_array($action, ['index']) ? 'active' : '' }}">
             <a class="nav-link btn text-white" role="button" href="{{ route('account.dashboard') }}">Dashboard</a>
         </li>
-        <?php
-        $userManagementIsActive = Request::segment(2) === 'user-list' || Request::segment(2) === 'add-user';
-        ?>
         <li class="nav-item">
             <a href="#submenu1" class="nav-link btn text-white" data-bs-toggle="collapse" role="button"
                 aria-expanded="{{ $controller == 'UsersController' ? 'true' : 'false' }}" aria-controls="submenu1">User
