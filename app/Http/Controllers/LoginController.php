@@ -26,7 +26,8 @@ class LoginController extends Controller
 
         if ($validator->passes()) {
 
-            if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
+                // dd(Auth::guard('web')->check());
                 return redirect()->route('account.dashboard');
             } else {
                 return redirect()->route('account.login')->with('error', 'Either email or password is incorrect'); // session message to show for errors if login credentials are incorrect

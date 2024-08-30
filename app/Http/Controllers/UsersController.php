@@ -5,15 +5,23 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
+use function Laravel\Prompts\search;
+
 class UsersController extends Controller
 {
-    public function userList()
+    public function userList(Request $request)
     {
         // using user model
-        $posts = auth()->user()->usersPosts()->latest()->paginate(5);
+        $search = $request['search'] ?? "";
+        if ($search) {
+            $posts = auth()->user()->usersPosts()->latest()->where('user', 'LIKE', "%$search%")->orwhere('role', 'LIKE', "%$search%")->paginate(5);
+        } else {
+            $posts = auth()->user()->usersPosts()->latest()->paginate(5);
+        }
+        // dd($posts,$search);
         // using post model
         // $posts = Post::where('user_id',auth()->id())->latest()->get();
-        return view('users.userList', ['posts' => $posts]);
+        return view('users.userList', ['posts' => $posts, 'search' => $search] );
     }
 
     public function addUser()
